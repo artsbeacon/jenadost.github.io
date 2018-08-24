@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Artwork } from '../artwork';
 
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,7 @@ import { ArtworkService }  from '../artwork.service';
 })
 export class ArtworkDetailComponent implements OnInit {
 
-  @Input() artwork: Artwork;
+  artwork: Artwork;
 
   constructor(
     private route: ActivatedRoute,
