@@ -1,0 +1,15 @@
+
+<div *ngIf="!selectedArtwork">
+  <ul class="artworks">
+    <li *ngFor="let artwork of artworks"
+      [class.selected]="artwork === selectedArtwork"
+      (click)="onSelect(artwork)">
+      <span class="badge"><img src="{{artwork.imgThumb}}"></span> {{artwork.name}}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedArtwork">
+  <a (click)="onBack()">Return to thumbnails</a>
+  <app-artwork-detail [artwork]="selectedArtwork"></app-artwork-detail>
+</div>

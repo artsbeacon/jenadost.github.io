@@ -1,0 +1,14 @@
+<div *ngIf="artwork">
+  <h2>{{artwork.name | uppercase}} Details</h2>
+  <img src="{{artwork.img}}" />
+  <p>{{artwork.name}}, {{artwork.year}}<br>
+  {{artwork.media}}</p>
+  <p>{{artwork.description}}</p>
+
+  <hr />
+  <div>
+    <label>name:
+      <input [(ngModel)]="artwork.name" placeholder="name">
+    </label>
+  </div>
+</div>
