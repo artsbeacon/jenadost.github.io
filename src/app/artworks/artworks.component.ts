@@ -12,16 +12,6 @@ export class ArtworksComponent implements OnInit {
 
   artworks: Artwork[];
 
-  selectedArtwork: Artwork;
-
-  onSelect(artwork: Artwork): void {
-    this.selectedArtwork = artwork;
-  }
-
-  onBack(): void {
-    this.selectedArtwork = null
-  }
-
   getArtworks(): void {
     this.artworkService.getArtworks()
       .subscribe(artworks => this.artworks = artworks)

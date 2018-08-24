@@ -2,14 +2,11 @@
 <div *ngIf="!selectedArtwork">
   <ul class="artworks">
     <li *ngFor="let artwork of artworks"
-      [class.selected]="artwork === selectedArtwork"
-      (click)="onSelect(artwork)">
-      <span class="badge"><img src="{{artwork.imgThumb}}"></span> {{artwork.name}}
+      [class.selected]="artwork === selectedArtwork">
+      <a routerLink="/artwork/{{artwork.id}}">
+        <span class="badge"><img src="{{artwork.imgThumb}}"></span><br>
+        {{artwork.name}}
+      </a>
     </li>
   </ul>
-</div>
-
-<div *ngIf="selectedArtwork">
-  <a (click)="onBack()">Return to thumbnails</a>
-  <app-artwork-detail [artwork]="selectedArtwork"></app-artwork-detail>
 </div>
