@@ -1,12 +1,8 @@
-
-<div *ngIf="!selectedArtwork">
-  <ul class="artworks">
-    <li *ngFor="let artwork of artworks"
-      [class.selected]="artwork === selectedArtwork">
-      <a routerLink="/artwork/{{artwork.id}}">
-        <span class="badge"><img src="{{artwork.imgThumb}}"></span><br>
-        {{artwork.name}}
-      </a>
-    </li>
-  </ul>
-</div>
+<ul class="artworks">
+  <li *ngFor="let artwork of artworks">
+    <a routerLink="/artwork/{{artwork.id}}">
+      <span class="badge"><img src="{{artwork.imgThumb}}"></span><br>
+      {{artwork.name}}
+    </a>
+  </li>
+</ul>
