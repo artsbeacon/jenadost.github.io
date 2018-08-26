@@ -1,8 +1,39 @@
-<div *ngIf="artwork">
-  <button (click)="goBack()">go back</button>
-  <h2>{{artwork.name | uppercase}} Details</h2>
-  <img src="{{artwork.img}}" />
-  <p>{{artwork.name}}, {{artwork.year}}<br>
-  {{artwork.media}}</p>
-  <p>{{artwork.description}}</p>
+<div class="container">
+  <div class="row">
+    <div class="two columns">
+      <nav id="leftnav">
+        <a routerLink="/portfolio"><i class="fas fa-angle-double-right"></i> {{portfolio.title}}</a>
+      </nav>
+    </div>
+    <div class="eight columns">
+    <article *ngIf="artwork" class="artworkDetail">
+      <a (click)="showModal()"><img class="u-full-width" src="{{artwork.img}}" /></a>
+      <h1>{{artwork.name}}</h1>
+      <p>{{artwork.media}}, {{artwork.year}}</p>
+      <p class="description" [innerHTML]="artwork.description"></p>
+      <!--
+      <button (click)="goBack()">go back</button>
+    -->
+    </article>
+    </div>
+    <div class="two columns">&nbsp;</div>
+  </div>
+</div>
+
+<div class="modal">
+  <div class="modal-inner">
+    <div class="modal-content">
+      <div class="modal-close-icon">
+        <a href="javascript:void(0)" class="close-modal" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></a>
+      </div>
+      <div class="modal-content-inner">
+        <h4>{{artwork.name}}</h4>
+        <p><img class="u-full-width" src="{{artwork.imgZoom}}" /></p>
+      </div>
+      <hr class="modal-buttons-seperator">
+      <div class="modal-buttons">
+        <button class="button close-modal" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

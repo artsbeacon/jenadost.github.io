@@ -1,6 +1,22 @@
-<h1><a routerLink="/">{{ title }}</a></h1>
-<nav>
-  <a routerLink="/portfolio">Portfolio</a>
-</nav>
-<router-outlet></router-outlet>
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<main>
+  <header class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <h2 class="u-pull-left"><a routerLink="/">{{ title }}</a></h2>
+        <nav id="topnav">
+          <a routerLink="/portfolio">Portfolio</a>
+          <a href="/pages">CV</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+</main>
+
 <app-messages></app-messages>
+
+<!-- End Document
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->

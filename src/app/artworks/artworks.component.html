@@ -1,8 +1,21 @@
-<ul class="artworks">
-  <li *ngFor="let artwork of artworks">
-    <a routerLink="/artwork/{{artwork.id}}">
-      <span class="badge"><img src="{{artwork.imgThumb}}"></span><br>
-      {{artwork.name}}
-    </a>
-  </li>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="two columns">
+      <nav id="leftnav">
+        <a routerLink="/portfolio"><i class="fas fa-angle-double-right"></i> {{portfolio.title}}</a>
+      </nav>
+    </div>
+    <div class="eight columns">
+      <ul class="artworkList">
+        <li *ngFor="let artwork of artworks; let i = index">
+          <p><a routerLink="/artwork/{{artwork.id}}">
+            <img src="{{artwork.img}}"><br>
+            <em>{{artwork.name}}</em><br>
+            {{artwork.media}}
+          </a></p>
+        </li>
+      </ul>
+    </div>
+    <div class="two columns">&nbsp;</div>
+  </div>
+</div>

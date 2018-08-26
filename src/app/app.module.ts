@@ -6,13 +6,15 @@ import { ArtworksComponent } from './artworks/artworks.component';
 import { ArtworkDetailComponent } from './artwork-detail/artwork-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArtworksComponent,
     ArtworkDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Artwork } from '../artwork';
+import { Portfolio } from '../portfolio';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -13,6 +14,11 @@ import { ArtworkService }  from '../artwork.service';
 })
 export class ArtworkDetailComponent implements OnInit {
 
+  portfolio: Portfolio = {
+    id: 1,
+    title: 'Love Portraits'
+  }
+
   artwork: Artwork;
 
   constructor(
@@ -23,6 +29,16 @@ export class ArtworkDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getArtwork();
+    //
+    var modal = document.querySelector('.modal');
+    // close modal if clicked outside content area
+    document.querySelector('.modal-inner').addEventListener('click', function() {
+      modal.classList.toggle('modal-open');
+    });
+    // prevent modal inner from closing parent when clicked
+    document.querySelector('.modal-content').addEventListener('click', function(e) {
+    	e.stopPropagation();
+    });
   }
 
   getArtwork(): void {
@@ -34,5 +50,15 @@ export class ArtworkDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  showModal(): void {
+    var modal = document.querySelector('.modal');
+    modal.classList.toggle('modal-open');
+  }
+  closeModal(): void {
+    var modal = document.querySelector('.modal');
+    modal.classList.toggle('modal-open');
+  }
+
 
 }

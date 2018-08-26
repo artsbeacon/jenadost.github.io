@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Portfolio } from '../portfolio';
 import { Artwork } from '../artwork';
-import { ARTWORKS } from '../mock-artworks';
 import { ArtworkService } from '../artwork.service';
 
 @Component({
@@ -9,6 +9,11 @@ import { ArtworkService } from '../artwork.service';
   styleUrls: ['./artworks.component.css']
 })
 export class ArtworksComponent implements OnInit {
+
+  portfolio: Portfolio = {
+    id: 1,
+    title: 'Love Portraits'
+  }
 
   artworks: Artwork[];
 
