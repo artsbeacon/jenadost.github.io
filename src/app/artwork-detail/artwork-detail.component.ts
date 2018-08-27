@@ -60,5 +60,16 @@ export class ArtworkDetailComponent implements OnInit {
     modal.classList.toggle('modal-open');
   }
 
+  showPrev(): void {
+    console.log('show prev')
+    this.artworkService.getPrevArtwork(this.artwork.id)
+      .subscribe(artwork => this.artwork = artwork);
+  }
+  showNext(): void {
+    console.log('show next')
+    this.artworkService.getNextArtwork(this.artwork.id)
+      .subscribe(artwork => this.artwork = artwork);
+  }
+
 
 }

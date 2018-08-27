@@ -6,6 +6,7 @@
       </nav>
     </div>
     <div class="eight columns">
+      <p><a (click)="showPrev()" class="u-pull-left"><i class="fas fa-angle-left"></i> Previous</a><a (click)="showNext()" class="u-pull-right">Next <i class="fas fa-angle-right"></i></a></p>
     <article *ngIf="artwork" class="artworkDetail">
       <a (click)="showModal()"><img class="u-full-width" src="{{artwork.img}}" /></a>
       <h1>{{artwork.name}}</h1>
