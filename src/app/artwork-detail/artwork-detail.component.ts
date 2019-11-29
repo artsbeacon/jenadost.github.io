@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Artwork } from '../artwork';
 import { Portfolio } from '../portfolio';
 
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 import { ArtworkService }  from '../artwork.service';
 
@@ -14,22 +15,37 @@ import { ArtworkService }  from '../artwork.service';
 })
 export class ArtworkDetailComponent implements OnInit {
 
-  portfolio: Portfolio = {
-    id: 1,
-    title: 'Love Portraits'
-  }
+  portfolioList: Portfolio[];
+  activePortfolioSlug: String;
 
-  artwork: Artwork;
+  artwork$: Observable<Artwork>;
+  artworkList: Artwork[];
 
   constructor(
     private route: ActivatedRoute,
-    private artworkService: ArtworkService,
-    private location: Location
+    private router: Router,
+    private service: ArtworkService
   ) { }
 
   ngOnInit() {
-    this.getArtwork();
-    //
+    // TODO: make the artworks use a slug instead of id for the url
+
+    // NOTE: template must use async
+    this.artwork$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.service.getArtworkById(+params.get('id')))
+    );
+
+    // TODO: change artworks data to link by portfolio id not slug
+    this.artwork$.subscribe(curArtwork => {
+      this.activePortfolioSlug = curArtwork.portfolio
+      // load all artworks for this portfolio for use by the prev/next links
+      this.service.getArtworksByPortfolioSlug(curArtwork.portfolio).subscribe(portfolioArtworks => this.artworkList = portfolioArtworks)
+    })
+
+    // TODO: move the portfolio list nav to a left nav component
+    this.service.getPortfolios().subscribe(allPortfolios => this.portfolioList = allPortfolios)
+
+    // handle modal content
     var modal = document.querySelector('.modal');
     // close modal if clicked outside content area
     document.querySelector('.modal-inner').addEventListener('click', function() {
@@ -41,16 +57,6 @@ export class ArtworkDetailComponent implements OnInit {
     });
   }
 
-  getArtwork(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.artworkService.getArtwork(id)
-      .subscribe(artwork => this.artwork = artwork);
-  }
-
-  goBack(): void {
-    this.location.back();
-  }
-
   showModal(): void {
     var modal = document.querySelector('.modal');
     modal.classList.toggle('modal-open');
@@ -60,15 +66,22 @@ export class ArtworkDetailComponent implements OnInit {
     modal.classList.toggle('modal-open');
   }
 
-  showPrev(): void {
-    console.log('show prev')
-    this.artworkService.getPrevArtwork(this.artwork.id)
-      .subscribe(artwork => this.artwork = artwork);
+  // TODO: update the url OR make the links use the portfolio's id
+  showPrev(id: number): void {
+    // NOTE: use of to set the object as an observable
+    let newIndex = this.artworkList.findIndex(el => el.id === id) - 1
+    if (newIndex < 0){
+      newIndex = this.artworkList.length - 1
+    }
+    this.artwork$ = of(this.artworkList[newIndex])
   }
-  showNext(): void {
-    console.log('show next')
-    this.artworkService.getNextArtwork(this.artwork.id)
-      .subscribe(artwork => this.artwork = artwork);
+  showNext(id: number): void {
+    // NOTE: use of to set the object as an observable
+    let newIndex = this.artworkList.findIndex(el => el.id === id) + 1
+    if (newIndex > this.artworkList.length - 1){
+      newIndex = 0
+    }
+    this.artwork$ = of(this.artworkList[newIndex])
   }
 
 

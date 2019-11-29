@@ -17,6 +17,10 @@
   margin-top: 5.0rem;
 }
 
+.portfolioList li {
+  list-style: none;
+}
+
 .modal img {
   border: 1px solid #999;
   box-sizing: content-box;

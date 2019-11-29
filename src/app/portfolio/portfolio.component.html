@@ -3,13 +3,14 @@
     <div class="three columns">
       <nav id="leftnav">
         <div *ngFor="let p of portfolioList; let i = index" class="portfolioList">
-          <a routerLink="/portfolio/{{p.slug}}" [class.active]="p.slug == portfolioAsync.slug">
+          <a routerLink="/portfolio/{{p.slug}}" [class.active]="p.slug == activePortfolioSlug">
             <i class="fas fa-angle-double-right"></i> {{p.title}}
           </a>
         </div>
       </nav>
     </div>
     <div class="eight columns">
+      <h5>{{portfolioAsync.title}}</h5>
       <ul class="artworkList">
         <li *ngFor="let artwork of artworkList; let i = index">
           <p><a routerLink="/artwork/{{artwork.id}}">

@@ -7,4 +7,6 @@ export class Artwork {
   description: string;
   year: number;
   media: string;
+  dimensions: string;
+  portfolio: string;
 }

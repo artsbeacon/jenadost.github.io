@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Page } from './page'
-import { PAGES } from './mock-pages'
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PageService {
 
-  constructor() { }
+  constructor(private http: HttpClient,
+      private messageService: MessageService) { }
 
-  getPage(slug: string): Observable<Page> {
-    // TODO: send the message _after_ fetching the hero
-    //this.messageService.add(`ArtworkService: fetched artwork id=${id}`);
-    return of(PAGES.find(page => page.slug === slug));
+  private serviceUrl = 'assets/data/pages.json';  // URL to web api
+
+  /** GET data from the server */
+  getPages (): Observable<Page[]> {
+    return this.http.get<Page[]>(this.serviceUrl);
   }
+
+  getPage(slug: string) {
+    return this.getPages().pipe(
+      map(pages => pages.find(page => page.slug === slug))
+    );
+  }
+
 }

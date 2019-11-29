@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArtworksComponent } from './artworks/artworks.component'
-import { ArtworkDetailComponent }  from './artwork-detail/artwork-detail.component';
-import { PagesComponent } from './pages/pages.component'
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { ArtworksComponent } from './artworks/artworks.component';
+import { ArtworkDetailComponent } from './artwork-detail/artwork-detail.component';
+import { PagesComponent } from './pages/pages.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/portfolio', pathMatch: 'full' },
+  { path: '', redirectTo: '/portfolios', pathMatch: 'full' },
   { path: 'artwork/:id', component: ArtworkDetailComponent },
-  { path: 'pages', component: PagesComponent },
-  { path: 'portfolio', component: ArtworksComponent }
+  { path: 'pages/:slug', component: PagesComponent },
+  { path: 'portfolios', component: PortfolioComponent },
+  { path: 'portfolio/:slug', component: PortfolioComponent }
 ];
 
 @NgModule({

@@ -1,23 +1,24 @@
-<div class="container">
+<div class="container" *ngIf="artwork$ | async as artworkAsync">
   <div class="row">
-    <div class="two columns">
+    <div class="three columns">
       <nav id="leftnav">
-        <a routerLink="/portfolio"><i class="fas fa-angle-double-right"></i> {{portfolio.title}}</a>
+        <div *ngFor="let p of portfolioList; let i = index" class="portfolioList">
+            <a routerLink="/portfolio/{{p.slug}}" [class.active]="p.slug == activePortfolioSlug">
+              <i class="fas fa-angle-double-right"></i> {{p.title}}
+            </a>
+        </div>
       </nav>
     </div>
     <div class="eight columns">
-      <p><a (click)="showPrev()" class="u-pull-left"><i class="fas fa-angle-left"></i> Previous</a><a (click)="showNext()" class="u-pull-right">Next <i class="fas fa-angle-right"></i></a></p>
-    <article *ngIf="artwork" class="artworkDetail">
-      <a (click)="showModal()"><img class="u-full-width" src="{{artwork.img}}" /></a>
-      <h1>{{artwork.name}}</h1>
-      <p>{{artwork.media}}, {{artwork.year}}</p>
-      <p class="description" [innerHTML]="artwork.description"></p>
-      <!--
-      <button (click)="goBack()">go back</button>
-    -->
+      <p><a (click)="showPrev(artworkAsync.id)" class="u-pull-left"><i class="fas fa-angle-left"></i> Previous</a><a (click)="showNext(artworkAsync.id)" class="u-pull-right">Next <i class="fas fa-angle-right"></i></a></p>
+    <article class="artworkDetail">
+      <a (click)="showModal()"><img class="u-full-width" src="{{artworkAsync.img}}" /></a>
+      <h1>{{artworkAsync.name}}</h1>
+      <p>{{artworkAsync.media}}, {{artworkAsync.year}}</p>
+      <p class="description" [innerHTML]="artworkAsync.description"></p>
     </article>
     </div>
-    <div class="two columns">&nbsp;</div>
+    <div class="one columns">&nbsp;</div>
   </div>
 </div>
 
@@ -27,9 +28,9 @@
       <div class="modal-close-icon">
         <a href="javascript:void(0)" class="close-modal" (click)="closeModal()"><i class="fa fa-times" aria-hidden="true"></i></a>
       </div>
-      <div class="modal-content-inner">
-        <h4>{{artwork.name}}</h4>
-        <p><img class="u-full-width" src="{{artwork.imgZoom}}" /></p>
+      <div class="modal-content-inner" *ngIf="artwork$ | async as artworkAsync">
+        <h4>{{artworkAsync.name}}</h4>
+        <p><img class="u-full-width" src="{{artworkAsync.imgZoom}}" /></p>
       </div>
       <hr class="modal-buttons-seperator">
       <div class="modal-buttons">
