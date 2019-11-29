@@ -1,10 +1,20 @@
 /* PortfolioComponent's private CSS styles */
 .artworkList li {
   list-style: none;
-  width: 47%;
-  float: left;
   text-align: center;
   margin-bottom: 2em;
+
+  float: none;
+  width: 100%;
+
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .artworkList li {
+    float: left;
+    width: 47%;
+  }
 }
 
 .artworkList li:nth-child(odd) {

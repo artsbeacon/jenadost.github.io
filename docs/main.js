@@ -728,7 +728,7 @@ var PagesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* PortfolioComponent's private CSS styles */\n.artworkList li {\n  list-style: none;\n  width: 47%;\n  float: left;\n  text-align: center;\n  margin-bottom: 2em;\n}\n.artworkList li:nth-child(odd) {\n  margin-right: 5%;\n}\n.artworkList p {\n  line-height: 1.2em;\n}\n.artworkList li img {\n  max-width: 100%;\n  max-height: 250px;\n  border: 1px solid #999;\n}\n.portfolioList li {\n  list-style: none;\n}\n"
+module.exports = "/* PortfolioComponent's private CSS styles */\n.artworkList li {\n  list-style: none;\n  text-align: center;\n  margin-bottom: 2em;\n\n  float: none;\n  width: 100%;\n\n}\n/* Larger than tablet */\n@media (min-width: 750px) {\n  .artworkList li {\n    float: left;\n    width: 47%;\n  }\n}\n.artworkList li:nth-child(odd) {\n  margin-right: 5%;\n}\n.artworkList p {\n  line-height: 1.2em;\n}\n.artworkList li img {\n  max-width: 100%;\n  max-height: 250px;\n  border: 1px solid #999;\n}\n.portfolioList li {\n  list-style: none;\n}\n"
 
 /***/ }),
 
