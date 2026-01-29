@@ -1,5 +1,7 @@
 [
-  { "id": 2, "title": "Shadow Drawings", "slug": "shadow-drawings" },
-  { "id": 3, "title": "Love Portraits", "slug": "love-portraits" }
-  ]
-  
+  { "id": 6, "title": "Relief Sculpture", "slug": "relief-sculpture" },
+  { "id": 4, "title": "Sculpture", "slug": "sculpture" },
+  { "id": 5, "title": "Vessels", "slug": "vessels" },
+  { "id": 3, "title": "Tarot Hands", "slug": "tarot" },
+  { "id": 2, "title": "Drawings", "slug": "drawings" }
+]

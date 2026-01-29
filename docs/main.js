@@ -90,7 +90,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Primary Page Layout\n–––––––––––––––––––––––––––––––––––––––––––––––––– -->\n<main>\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"eight columns offset-by-three\">\n        <h2 class=\"u-pull-left\"><a routerLink=\"/\">{{ title }}</a></h2>\n        <nav id=\"topnav\">\n          <a routerLink=\"/portfolios\">Portfolio</a>\n          <!-- TODO: dynamic page links -->\n          <a routerLink=\"/pages/arts-beacon\">Arts Beacon</a>\n          <a routerLink=\"/pages/cv\">CV</a>\n        </nav>\n      </div>\n    </div>\n  </header>\n\n  <router-outlet></router-outlet>\n</main>\n\n<app-messages></app-messages>\n\n<!-- End Document\n–––––––––––––––––––––––––––––––––––––––––––––––––– -->\n"
+module.exports = "<!-- Primary Page Layout\n–––––––––––––––––––––––––––––––––––––––––––––––––– -->\n<main>\n  <header class=\"container\">\n    <div class=\"row\">\n      <div class=\"eight columns offset-by-three\">\n        <h2 class=\"u-pull-left\"><a routerLink=\"/\">{{ title }}</a></h2>\n        <nav id=\"topnav\">\n          <a routerLink=\"/portfolios\">Portfolio</a>\n          <!-- TODO: dynamic page links -->\n          <a routerLink=\"/pages/artist-statement\">Artist Statement</a>\n          <a routerLink=\"/pages/cv\">CV</a>\n        </nav>\n      </div>\n    </div>\n  </header>\n\n  <router-outlet></router-outlet>\n</main>\n\n<app-messages></app-messages>\n\n<!-- End Document\n–––––––––––––––––––––––––––––––––––––––––––––––––– -->\n"
 
 /***/ }),
 
